@@ -17,23 +17,38 @@ package org.japo.java.main;
 
 import java.util.Locale;
 import java.util.Scanner;
+
 /**
  *
  * @author Lluís CP - aw.lluiscerda@gmail.com
  */
+public class Main {
 
-public class Main {    
-    
-    public static final Scanner SCN = 
-	  new Scanner(System.in, "Windows-1252")
-	  .useLocale(Locale.ENGLISH).useDelimiter("\\s+");
-   
+    // Instanciar Scanner
+    public static final Scanner SCN
+            = new Scanner(System.in, "Windows-1252")
+                    .useLocale(Locale.ENGLISH).useDelimiter("\\s+");
+
     public static void main(String[] args) {
-        
-        System.out.println("Introduce tu altura en metros ...");
-        double Altura=SCN.nextDouble();
-        
-        System.out.println("Su altura es "+Altura+" metros");
+        // Variable
+        double altura;
+
+        // Cuarentena
+        try {
+            // Leer dato
+            System.out.print("Mi altura es .............: ");
+            altura = SCN.nextDouble();
+
+            // Mensaje
+            System.out.printf(Locale.ENGLISH,
+                    "Mi altura es .............: %.2f metros%n", altura);
+        } catch (Exception e) {
+            // Mensaje
+            System.out.println("ERROR: Entrada incorrecta");
+        } finally {
+            // Borrar buffer
+            SCN.nextLine();
+        }
     }
-    
 }
+
